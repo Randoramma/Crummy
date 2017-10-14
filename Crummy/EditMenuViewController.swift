@@ -13,22 +13,22 @@ class EditMenuViewController: UIViewController, UITableViewDelegate, UITableView
   @IBOutlet weak var tableView: UITableView!
   
   let crummyApiService = CrummyApiService()
-  let headerViewFrame: CGRect = CGRectMake(15, 0, 300, 30)
+  let headerViewFrame: CGRect = CGRect(x: 15, y: 0, width: 300, height: 30)
   let headerFontSize: CGFloat = 23
   let headerHeight: CGFloat = 32
   var kiddo: Kid!
   var kidList: [Kid]?
   let titleFontSize: CGFloat = 26
-  let titleLabel = UILabel(frame: CGRectMake(0, 0, 80, 40))
+  let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
   let titleColor = UIColor(red: 0.060, green: 0.158, blue: 0.408, alpha: 1.000)
-  var indexPaths: [NSIndexPath]?
+  var indexPaths: [IndexPath]?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     self.tableView.delegate = self
     self.tableView.dataSource = self
-    self.titleLabel.textAlignment = .Center
+    self.titleLabel.textAlignment = .center
     self.titleLabel.textColor = self.titleColor
     self.titleLabel.font = UIFont(name: "HelveticaNeue-Light", size: self.titleFontSize)
     self.titleLabel.text = "Edit Menu"
@@ -36,16 +36,16 @@ class EditMenuViewController: UIViewController, UITableViewDelegate, UITableView
     
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     self.activityIndicator.startAnimating()
     self.crummyApiService.listKid { (kidList, error) -> (Void) in
       if let errorDescription = error {
-        let alertController = UIAlertController(title: "An Error Occurred", message: errorDescription, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (alert) -> Void in
-          self.dismissViewControllerAnimated(true, completion: nil)
+        let alertController = UIAlertController(title: "An Error Occurred", message: errorDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (alert) -> Void in
+          self.dismiss(animated: true, completion: nil)
         })
         alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
       } else {
         self.kidList = kidList!
         self.tableView.reloadData()
@@ -54,15 +54,15 @@ class EditMenuViewController: UIViewController, UITableViewDelegate, UITableView
     }
   }
   
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if let kidCount = self.kidList?.count {
       return kidCount
     }
     return 0
   }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("EditMenuCell", forIndexPath: indexPath) as! EditMenuTableViewCell
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "EditMenuCell", for: indexPath) as! EditMenuTableViewCell
     cell.textLabel?.text = nil
     if let kids = self.kidList?[indexPath.row] {
       cell.textLabel!.text = kids.name
@@ -70,22 +70,22 @@ class EditMenuViewController: UIViewController, UITableViewDelegate, UITableView
     return cell
   }
   
-  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
     let selectedMunchkin = self.kidList?[indexPath.row]
-    let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("EditKidVC") as! EditKidViewController
+    let viewController = self.storyboard!.instantiateViewController(withIdentifier: "EditKidVC") as! EditKidViewController
     viewController.selectedKid = selectedMunchkin
     self.navigationController?.pushViewController(viewController, animated: false)
   }
   
-  @IBAction func addButtonPressed(sender: AnyObject) {
-    let destinationController = storyboard?.instantiateViewControllerWithIdentifier("EditKidVC") as? EditKidViewController
+  @IBAction func addButtonPressed(_ sender: AnyObject) {
+    let destinationController = storyboard?.instantiateViewController(withIdentifier: "EditKidVC") as? EditKidViewController
     destinationController?.selectedKid = nil
     
-    performSegueWithIdentifier("ShowEditKidVC", sender: EditMenuViewController.self)
+    performSegue(withIdentifier: "ShowEditKidVC", sender: EditMenuViewController.self)
   }
   
-  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     
     let selectedMunchkin = self.kidList?[indexPath.row]
     let id = selectedMunchkin?.kidID
@@ -93,41 +93,41 @@ class EditMenuViewController: UIViewController, UITableViewDelegate, UITableView
     let name = selectedMunchkin?.name
     self.indexPaths = [indexPath]
     
-    let alertController = UIAlertController(title: "Alert", message: "Seriously! Delete your own child? Eviscerate poor \(name!)?", preferredStyle: .Alert)
+    let alertController = UIAlertController(title: "Alert", message: "Seriously! Delete your own child? Eviscerate poor \(name!)?", preferredStyle: .alert)
     
     let defaultActionHandler = { (action: UIAlertAction!) -> Void in
-      self.kidList?.removeAtIndex(indexPath.row)
-      tableView.deleteRowsAtIndexPaths(self.indexPaths!, withRowAnimation: .Automatic)
+      self.kidList?.remove(at: indexPath.row)
+      tableView.deleteRows(at: self.indexPaths!, with: .automatic)
       self.crummyApiService.deleteKid(idString, completionHandler: { (error) -> (Void) in
       })
     }
-    let defaultAction = UIAlertAction(title: "Delete anyway you monster!", style: .Default, handler: defaultActionHandler)
+    let defaultAction = UIAlertAction(title: "Delete anyway you monster!", style: .default, handler: defaultActionHandler)
     alertController.addAction(defaultAction)
     
     let cancelActionHandler = { (action:UIAlertAction!) -> Void in
-      self.tableView.reloadRowsAtIndexPaths(self.indexPaths!, withRowAnimation: .Automatic)
+      self.tableView.reloadRows(at: self.indexPaths!, with: .automatic)
       
     }
-    let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: cancelActionHandler)
+    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: cancelActionHandler)
     alertController.addAction(cancelAction)
-    self.presentViewController(alertController, animated: true, completion: nil)
+    self.present(alertController, animated: true, completion: nil)
   }
   
-  func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    var view = CustomHeaderView(width: self.view.frame.width)
-    var headerLabel = UILabel(frame: self.headerViewFrame)
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let view = CustomHeaderView(width: self.view.frame.width)
+    let headerLabel = UILabel(frame: self.headerViewFrame)
     headerLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
-    headerLabel.textColor = UIColor.whiteColor()
+    headerLabel.textColor = UIColor.white
     headerLabel.font = UIFont(name: "HelveticaNeue-Light", size: self.headerFontSize)
     view.addSubview(headerLabel)
     return view
   }
   
-  func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return self.headerHeight
   }
   
-  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return "My Kids"
   }
 }

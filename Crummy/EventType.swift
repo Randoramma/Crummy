@@ -10,38 +10,38 @@ import Foundation
 
 enum EventType: Int {
   
-  case Medication
-  case Measurement
-  case Symptom
-  case Temperature
+  case medication
+  case measurement
+  case symptom
+  case temperature
   
   func description() -> String {
     switch self {
-    case .Medication:
+    case .medication:
       return "Medicine"
-    case .Measurement:
+    case .measurement:
       return "HeightWeight"
-    case .Symptom:
+    case .symptom:
       return "Symptom"
-    case .Temperature:
+    case .temperature:
       return "Temperature"
-    default:
-      return String(self.rawValue)
+//    default:
+//      return String(self.rawValue)
     }
   }
   
   func filterDisplayValue() -> String {
     switch self {
-    case .Medication:
+    case .medication:
       return "Medications"
-    case .Measurement:
+    case .measurement:
       return "Measurements"
-    case .Symptom:
+    case .symptom:
       return "Symptoms"
-    case .Temperature:
+    case .temperature:
       return "Temperatures"
-    default:
-      return String(self.rawValue)
+//    default:
+//      return String(self.rawValue)
     }
   }
 }

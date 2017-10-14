@@ -8,14 +8,13 @@
 
 import Foundation
 
-extension NSDate
+/* Extension initializes a date object calculated from an input string  */
+extension Date
 {
-  convenience
+  
   init(dateString:String) {
-    let dateStringFormatter = NSDateFormatter()
+    let dateStringFormatter = DateFormatter()
     dateStringFormatter.dateFormat = "yyyy-MM-dd"
-    //dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-    let d = dateStringFormatter.dateFromString(dateString)
-    self.init(timeInterval:0, sinceDate:d!)
+    self.init(dateString: dateString)
   }
 }

@@ -30,30 +30,30 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CreateUserView
     self.usernameTextField.delegate = self
     self.passwordTextField.delegate = self
     
-    self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+    self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
     self.view.addGestureRecognizer(self.tapGestureRecognizer!)
   }
   
-  @IBAction func loginPressed(sender: UIButton) {
+  @IBAction func loginPressed(_ sender: UIButton) {
     let username = usernameTextField.text
     let password = passwordTextField.text
     
-    self.crummyApiService.postLogin(username, password: password, completionHandler: { (status, error) -> (Void) in
+    self.crummyApiService.postLogin(username!, password: password!, completionHandler: { (status, error) -> (Void) in
       
       if status != nil {
-          self.statusView.backgroundColor = UIColor.greenColor()
+          self.statusView.backgroundColor = UIColor.green
           self.statusLabel.text = "Success"
           self.constraintStatusViewCenterX.constant = 0
-          UIView.animateWithDuration(self.animationDurationLonger, animations: { () -> Void in
+          UIView.animate(withDuration: self.animationDurationLonger, animations: { () -> Void in
             self.view.layoutIfNeeded()
             }, completion: { (finshed) -> Void in
-              self.performSegueWithIdentifier("ShowHomeMenu", sender: self)
+              self.performSegue(withIdentifier: "ShowHomeMenu", sender: self)
           })
       } else {
-        self.statusView.backgroundColor = UIColor.redColor()
+        self.statusView.backgroundColor = UIColor.red
         self.statusLabel.text = "Error creating user"
         self.constraintStatusViewCenterX.constant = 0
-        UIView.animateWithDuration(self.animationDurationLonger, animations: { () -> Void in
+        UIView.animate(withDuration: self.animationDurationLonger, animations: { () -> Void in
           self.view.layoutIfNeeded()
         })
       }
@@ -68,21 +68,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CreateUserView
   //MARK:
   //MARK: UITextFieldDelegate
   
-  func textFieldDidBeginEditing(textField: UITextField) {
+  func textFieldDidBeginEditing(_ textField: UITextField) {
     self.constraintContainerCenterY.constant += bufferForSlidingLoginView
-    UIView.animateWithDuration(self.animationDuration, animations: { () -> Void in
+    UIView.animate(withDuration: self.animationDuration, animations: { () -> Void in
       self.view.layoutIfNeeded()
     })
   }
   
-  func textFieldDidEndEditing(textField: UITextField) {
+  func textFieldDidEndEditing(_ textField: UITextField) {
         self.constraintContainerCenterY.constant -= self.bufferForSlidingLoginView
-    UIView.animateWithDuration(self.animationDuration, animations: { () -> Void in
+    UIView.animate(withDuration: self.animationDuration, animations: { () -> Void in
       self.view.layoutIfNeeded()
     })
   }
   
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     self.usernameTextField.resignFirstResponder()
     if textField == usernameTextField {
       self.passwordTextField.becomeFirstResponder()
@@ -92,7 +92,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CreateUserView
     return true
   }
   
-  func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     if textField == usernameTextField {
       if string.validForUsername() {
         return true
@@ -103,20 +103,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CreateUserView
     return true
   }
   
-  func getUsernameFromRegister(username: String) {
+  func getUsernameFromRegister(_ username: String) {
     self.usernameTextField.text = username
   }
   
   //MARK:
   //MARK: prepareForSegue
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "Register" {
       self.constraintStatusViewCenterX.constant = 600
-      UIView.animateWithDuration(self.animationDurationLonger, animations: { () -> Void in
+      UIView.animate(withDuration: self.animationDurationLonger, animations: { () -> Void in
         self.view.layoutIfNeeded()
       })
-      let destinationController = segue.destinationViewController as! UINavigationController
+      let destinationController = segue.destination as! UINavigationController
     let createUser = destinationController.viewControllers[0] as! CreateUserViewController
       createUser.delegate = self
     }

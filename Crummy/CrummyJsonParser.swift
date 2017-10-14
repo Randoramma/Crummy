@@ -9,20 +9,20 @@ import Foundation
 
 class CrummyJsonParser {
   
-  class func parseJsonListKid(jsonData: NSData) -> [Kid] {
+  class func parseJsonListKid(_ jsonData: Data) -> [Kid] {
     var parse = [Kid]()
-    var jsonError: NSError?
+    var _: NSError?
     
-    if let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &jsonError) as? [[String: AnyObject]] {
+    if let jsonArray = JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.allowFragments) as? [[String: AnyObject]] {
       
       for object in jsonArray {
         let name = object["name"] as! String
         let kidId = object["id"] as! Int
         let id = "\(kidId)"
-        var dob = object["dob"] as? String
-        var insuranceId = object["insurance_id"] as? String
-        var nursePhone = object["nurse_phone"] as? String
-        var notes = object["notes"] as? String  // Add notes when Kid obbject updated
+        let dob = object["dob"] as? String
+        let insuranceId = object["insurance_id"] as? String
+        let nursePhone = object["nurse_phone"] as? String
+        let notes = object["notes"] as? String  // Add notes when Kid obbject updated
         let kid = Kid(theName: name, theDOB: dob, theInsuranceID: insuranceId, theNursePhone: nursePhone, theNotes: notes, theKidID: id)
         parse.append(kid)
       }
@@ -30,30 +30,30 @@ class CrummyJsonParser {
     return parse
   }
   
-  class func parseJsonGetKid(jsonData: NSData) -> Kid {
+  class func parseJsonGetKid(_ jsonData: Data) -> Kid {
     var editMenuKid: Kid!
-    var jsonError: NSError?
+    var _: NSError?
     
     if let
-      jsonDictionary = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &jsonError) as? [String: AnyObject] {
+      jsonDictionary = JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.allowFragments) as? [String: AnyObject] {
         
       let name = jsonDictionary["name"] as! String
       let kidId = jsonDictionary["id"] as! Int
       let id = String(stringInterpolationSegment: kidId)
-      var dob = jsonDictionary["dob"] as? String
-      var insuranceId = jsonDictionary["insurance_id"] as? String
-      var nursePhone = jsonDictionary["nurse_phone"] as? String
-      var notes = jsonDictionary["notes"] as? String  // Add notes when Kid obbject updated
+      let dob = jsonDictionary["dob"] as? String
+      let insuranceId = jsonDictionary["insurance_id"] as? String
+      let nursePhone = jsonDictionary["nurse_phone"] as? String
+      let notes = jsonDictionary["notes"] as? String  // Add notes when Kid obbject updated
       editMenuKid = Kid(theName: name, theDOB: dob, theInsuranceID: insuranceId, theNursePhone: nursePhone, theNotes: notes, theKidID: id)
     }
     return editMenuKid
   }
   
-  class func parseEvents(jsonData: NSData) -> [Event] {
+  class func parseEvents(_ jsonData: Data) -> [Event] {
     var events = [Event]()
     var error: NSError?
     
-    if let jsonObject = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &error) as? [[String: AnyObject]] {
+    if let jsonObject = JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.allowFragments) as? [[String: AnyObject]] {
       for event in jsonObject {
         if let eventId = event["id"] as? Int {
           var id = "\(eventId)"
@@ -66,20 +66,20 @@ class CrummyJsonParser {
           var date: NSDate?
           if let type = event["type"] as? String {
             if type == "Medicine" {
-              eventType = EventType.Medication
+              eventType = EventType.medication
             } else if type == "Temperature" {
-              eventType = EventType.Temperature
+              eventType = EventType.temperature
             } else if type == "HeightWeight" {
-              eventType = EventType.Measurement
+              eventType = EventType.measurement
             } else {
-              eventType = EventType.Symptom
+              eventType = EventType.symptom
             }
           }
           if let datetime = event["datetime"] as? String {
             //Need dateFormatter
-            var dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-            date = dateFormatter.dateFromString(datetime)
+            date = dateFormatter.date(from: datetime) as! NSDate
           }
           if let eventName = event["meds"] as? String {
             name = eventName
@@ -97,7 +97,7 @@ class CrummyJsonParser {
             description = eventDescription
           }
           
-          let event = Event(id: id, type: eventType!, temperature: temperature, medication: name, height: height, weight: weight, symptom: description, date: date!)
+          let event = Event(id: id, type: eventType!, temperature: temperature, medication: name, height: height, weight: weight, symptom: description, date: date! as Date)
           events.append(event)
         }
       }
@@ -105,9 +105,9 @@ class CrummyJsonParser {
     return events
   }
   
-  class func getEventId(data: NSData) -> String? {
+  class func getEventId(_ data: Data) -> String? {
     
-    if let event = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [String: AnyObject], id = event["id"] as? Int {
+    if let event = JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? [String: AnyObject], let id = event["id"] as? Int {
       return "\(id)"
     }
     return nil

@@ -17,19 +17,19 @@ class DatePickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
    
-      datePicker.addTarget(self, action: Selector("datePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+      datePicker.addTarget(self, action: #selector(DatePickerViewController.datePickerChanged(_:)), for: UIControlEvents.valueChanged)
     }
   
   
   // func to set the date from the picker if no date is set.
   // https://github.com/ioscreator/ioscreator/blob/master/IOSSwiftDatePickerTutorial/IOSSwiftDatePickerTutorial/ViewController.swift
-  func datePickerChanged(datePicker:UIDatePicker) {
-    var dateFormatter = NSDateFormatter()
+  func datePickerChanged(_ datePicker:UIDatePicker) {
+    let dateFormatter = DateFormatter()
     
-    dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-    dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+    dateFormatter.dateStyle = DateFormatter.Style.short
+    dateFormatter.timeStyle = DateFormatter.Style.short
     
-    var strDate = dateFormatter.stringFromDate(datePicker.date)
+    let strDate = dateFormatter.string(from: datePicker.date)
     date = strDate
     
     // call here to send back to edit kid view controller?
@@ -37,7 +37,7 @@ class DatePickerViewController: UIViewController {
     
   }
 
-  @IBAction func dateButtonPressed(sender: AnyObject) {
+  @IBAction func dateButtonPressed(_ sender: AnyObject) {
     
     
   }

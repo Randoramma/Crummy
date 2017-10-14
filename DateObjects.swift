@@ -11,14 +11,14 @@ import UIKit
 
 class DateObject {
   
-  var dateFormatter = NSDateFormatter()
+  var dateFormatter = DateFormatter()
   
   // we want to convert a string to "dd-MM-yyyy"
   
-  func convertddMMYYYYToString (theDate : NSDate) -> (String) {
+  func convertddMMYYYYToString (_ theDate : Date) -> (String) {
     
      dateFormatter.dateFormat = "dd-MM-yyyy"
-    let stringDate = dateFormatter.stringFromDate(theDate)
+    let stringDate = dateFormatter.string(from: theDate)
     
     return stringDate
     

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CreateUserViewControllerDelegate : class {
-  func getUsernameFromRegister(username: String) -> Void
+  func getUsernameFromRegister(_ username: String) -> Void
 }
 
 class CreateUserViewController: UIViewController, UITextFieldDelegate {
@@ -29,7 +29,7 @@ class CreateUserViewController: UIViewController, UITextFieldDelegate {
   let animationDurationLonger: Double = 0.5
   var tapGestureRecognizer: UITapGestureRecognizer?
   let titleColor = UIColor(red: 0.060, green: 0.158, blue: 0.408, alpha: 1.000)
-  let titleLabel = UILabel(frame: CGRectMake(0, 0, 80, 40))
+  let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
   let titleSize: CGFloat = 26
   var delegate: CreateUserViewControllerDelegate?
   
@@ -39,19 +39,19 @@ class CreateUserViewController: UIViewController, UITextFieldDelegate {
     self.passwordTextField.delegate = self
     
     self.titleLabel.font = UIFont(name: "HelveticaNeue-Light", size: self.titleSize)
-    self.titleLabel.textAlignment = .Center
+    self.titleLabel.textAlignment = .center
     self.titleLabel.textColor = self.titleColor
     titleLabel.text = "Register"
     self.navigationItem.titleView = self.titleLabel
     
     let navBarImage = UIImage(named: "CrummyNavBar")
-    self.navigationController!.navigationBar.setBackgroundImage(navBarImage, forBarMetrics: .Default)
+    self.navigationController!.navigationBar.setBackgroundImage(navBarImage, for: .default)
     
-    self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+    self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateUserViewController.dismissKeyboard))
     self.view.addGestureRecognizer(self.tapGestureRecognizer!)
   }
   
-  @IBAction func doneBarButton(sender: UIBarButtonItem) {
+  @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
     let username = usernameTextField.text
     let password = passwordTextField.text
     
@@ -79,8 +79,8 @@ class CreateUserViewController: UIViewController, UITextFieldDelegate {
     })
   }
 
-  @IBAction func cancelPressed(sender: UIBarButtonItem) {
-    dismissViewControllerAnimated(true, completion: nil)
+  @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
+    dismiss(animated: true, completion: nil)
   }
   
   func dismissKeyboard() {
@@ -91,25 +91,25 @@ class CreateUserViewController: UIViewController, UITextFieldDelegate {
   //MARK:
   //MARK: UITextFieldDelegate
   
-  func textFieldDidBeginEditing(textField: UITextField) {
+  func textFieldDidBeginEditing(_ textField: UITextField) {
     if textField == self.passwordTextField {
       self.constraintCenterY.constant += self.bufferForSlidingLoginViewPassword
-      UIView.animateWithDuration(self.animationDuration, animations: { () -> Void in
+      UIView.animate(withDuration: self.animationDuration, animations: { () -> Void in
         self.view.layoutIfNeeded()
       })
     }
   }
   
-  func textFieldDidEndEditing(textField: UITextField) {
+  func textFieldDidEndEditing(_ textField: UITextField) {
     if textField == self.passwordTextField {
       self.constraintCenterY.constant -= self.bufferForSlidingLoginViewPassword
-      UIView.animateWithDuration(self.animationDuration, animations: { () -> Void in
+      UIView.animate(withDuration: self.animationDuration, animations: { () -> Void in
         self.view.layoutIfNeeded()
       })
     }
   }
   
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     self.usernameTextField.resignFirstResponder()
     if textField == self.usernameTextField{
       self.passwordTextField.becomeFirstResponder()
@@ -119,7 +119,7 @@ class CreateUserViewController: UIViewController, UITextFieldDelegate {
     return true
   }
   
-  func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     if textField == usernameTextField {
       if string.validForUsername() {
         return true

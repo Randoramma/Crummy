@@ -16,7 +16,7 @@ class Kid {
   
   var DOBString : String?
   // VVV is this even being used?  VVV
-  var dob : NSDate?
+  var dob : Date?
   
   var insuranceId : String?
   

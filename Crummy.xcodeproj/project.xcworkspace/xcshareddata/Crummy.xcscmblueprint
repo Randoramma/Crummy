@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "40814078C5B80DFF3637F038314950BEBF8C4F25",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "24030F9DCD347170E4D0C779DF11007E061AE5F5" : 9223372036854775807,
+    "40814078C5B80DFF3637F038314950BEBF8C4F25" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1B034BE9-1BAC-4F34-AB83-43841917D28F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "24030F9DCD347170E4D0C779DF11007E061AE5F5" : "",
+    "40814078C5B80DFF3637F038314950BEBF8C4F25" : "Crummy\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Crummy",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Crummy.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/codefellows\/sea-d34-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "24030F9DCD347170E4D0C779DF11007E061AE5F5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Randoramma\/Crummy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "40814078C5B80DFF3637F038314950BEBF8C4F25"
+    }
+  ]
+}
