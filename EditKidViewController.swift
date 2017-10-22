@@ -384,7 +384,7 @@ class EditKidViewController: UITableViewController, UITextFieldDelegate, UITextV
   //MARK:
   //MARK: UIImagePickerControllerDelegate
   
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [AnyHashable: Any]){
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [AnyHashable: Any]){
     if let photo = info[UIImagePickerControllerEditedImage] as? UIImage {
       self.kidImage = photo
       saveImage(photo)
@@ -403,7 +403,7 @@ class EditKidViewController: UITableViewController, UITextFieldDelegate, UITextV
     if self.selectedKid != nil {
       let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
       let documentsDirectoryPath = paths[0] 
-      let filePath = documentsDirectoryPath.stringByAppendingPathComponent("appData")
+      let filePath = documentsDirectoryPath.appending("appData")
       //var data = NSKeyedUnarchiver.unarchiveObjectWithFile(filePath) as? [String: AnyObject]
       var data = [String: AnyObject]()
       if let dataObj = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [String: AnyObject]  {
@@ -420,8 +420,8 @@ class EditKidViewController: UITableViewController, UITextFieldDelegate, UITextV
   
   func loadImage() {
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-    let documentsDirectoryPath = paths[0] 
-    let filePath = documentsDirectoryPath.stringByAppendingPathComponent("appData")
+    let documentsDirectoryPath = paths[0]
+    let filePath = documentsDirectoryPath.appending("appData")
     if FileManager.default.fileExists(atPath: filePath) {
       let savedData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as! [String: AnyObject]
       let customImageLocation = "kid_photo_\(self.selectedKid!.kidID)"

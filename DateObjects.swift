@@ -6,8 +6,7 @@
 //  Copyright (c) 2015 CF. All rights reserved.
 //
 
-import UIKit
-
+import Foundation
 
 class DateObject {
   

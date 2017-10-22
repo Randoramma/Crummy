@@ -55,23 +55,23 @@ class CreateUserViewController: UIViewController, UITextFieldDelegate {
     let username = usernameTextField.text
     let password = passwordTextField.text
     
-    self.crummyApiService.createNewUser(username, password: password, completionHandler: { (status, error) -> (Void) in
+    self.crummyApiService.createNewUser(username!, password: password!, completionHandler: { (status, error) -> (Void) in
       
       if status != nil {
-        self.statusView.backgroundColor = UIColor.greenColor()
+        self.statusView.backgroundColor = UIColor.green
         self.statusLabel.text = "Success"
         self.constraintStatusViewCenterX.constant = 0
-        UIView.animateWithDuration(self.animationDurationLonger, animations: { () -> Void in
+        UIView.animate(withDuration: self.animationDurationLonger, animations: { () -> Void in
           self.view.layoutIfNeeded()
         }, completion: { (finshed) -> Void in
-          self.delegate?.getUsernameFromRegister(self.usernameTextField.text)
-          self.dismissViewControllerAnimated(true, completion: nil)
+            self.delegate?.getUsernameFromRegister(self.usernameTextField.text!)
+            self.dismiss(animated: true, completion: nil)
         })
       } else {
-        self.statusView.backgroundColor = UIColor.redColor()
+        self.statusView.backgroundColor = UIColor.red
         self.statusLabel.text = "Error creating user"
         self.constraintStatusViewCenterX.constant = 0
-        UIView.animateWithDuration(self.animationDurationLonger, animations: { () -> Void in
+        UIView.animate(withDuration: self.animationDurationLonger, animations: { () -> Void in
           self.view.layoutIfNeeded()
         })
         // send error message to login screen here

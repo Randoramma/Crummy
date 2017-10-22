@@ -57,8 +57,8 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
     let eventTypeConstraintBuffer: CGFloat = 600
     let kid = Kid()
     let dateFormatter = DateFormatter()
-    let kidId: String? = nil
-    let kidName: String? = nil
+    var kidId: String? = nil
+    var kidName: String? = nil
     
     var currentCellHeight: CGFloat = 0
     var currentContainerViewHeight: CGFloat = 0
@@ -552,6 +552,7 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
                     self.view.layoutIfNeeded()
                 })
             }
+            //TODO: Is this needed? 
             self.contentOffsetChangeAmount != nil
             
             self.currentContainerView?.removeFromSuperview()

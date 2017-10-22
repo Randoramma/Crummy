@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       NSFontAttributeName : UIFont(name: "HelveticaNeue", size: self.globalNavigationItemFontSize)!
     ] as [AnyHashable: Any]
     
-    UIBarButtonItem.appearance().setTitleTextAttributes(attributes as! [String : Any], for: UIControlState.Normal)
+    UIBarButtonItem.appearance().setTitleTextAttributes((attributes as! [String : Any]), for: .normal)
     
     self.window?.tintColor = UIColor(red: 0.060, green: 0.158, blue: 0.408, alpha: 1.000)
     

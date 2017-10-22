@@ -24,29 +24,38 @@ class CrummyApiService {
     request.httpBody = data
     request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
     
-    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-      if error != nil {
-        completionHandler(nil, error.description)
-      } else {
-        let status = self.statusResponse(response)
-        if status == "200" {
-          if let jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [String: AnyObject] {
-            let token = jsonDictionary["authentication_token"] as! String
-            
-            UserDefaults.standardUserDefaults().setObject(token, forKey: "crummyToken")
-            UserDefaults.standard.synchronize()
-            OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-              completionHandler(status, nil)
-            })
-          }
-        } else {
-          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-            completionHandler(nil, status)
-          })
-        }
-      }
-    })
-    dataTask.resume()
+    //TODO: URLSESSION data task with request
+    
+    
+    
+    
+    
+//    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+//      if error != nil {
+//        completionHandler(nil, error.description)
+//      } else {
+//        let status = self.statusResponse(response)
+//        if status == "200" {
+    //TODO: SERIALIZE JSON
+//          if let jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [String: AnyObject] {
+//            let token = jsonDictionary["authentication_token"] as! String
+//
+//            UserDefaults.standardUserDefaults().setObject(token, forKey: "crummyToken")
+//            UserDefaults.standard.synchronize()
+//            OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//              completionHandler(status, nil)
+//            })
+//          }
+//        } else {
+//          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//            completionHandler(nil, status)
+//          })
+//        }
+//      }
+//    })
+//    dataTask.resume()
+    
+    
   }
   
   func createNewUser(_ username: String, password: String, completionHandler: @escaping (String?, String?) -> (Void)) {
@@ -60,23 +69,24 @@ class CrummyApiService {
     request.httpBody = data
     request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
     
-    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-      if error != nil {
-        completionHandler(nil, error.description)
-      } else {
-        let status = self.statusResponse(response)
-        if status == "200" {
-          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-            completionHandler(status, nil)
-          })
-        } else {
-          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-            completionHandler(nil, status)
-          })
-        }
-      }
-    })
-    dataTask.resume()
+    //TODO: URLSESSION data task with request
+//    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+//      if error != nil {
+//        completionHandler(nil, error.description)
+//      } else {
+//        let status = self.statusResponse(response)
+//        if status == "200" {
+//          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//            completionHandler(status, nil)
+//          })
+//        } else {
+//          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//            completionHandler(nil, status)
+//          })
+//        }
+//      }
+//    })
+//    dataTask.resume()
   }
   
   func listKid(_ completionHandler: @escaping ([Kid]?, String?) -> (Void)) {
@@ -88,20 +98,21 @@ class CrummyApiService {
     if let token = UserDefaults.standard.object(forKey: "crummyToken") as? String {
       request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
     }
-    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-      if error != nil {
-        completionHandler(nil, error.description)
-      } else {
-        let status = self.statusResponse(response)
-        if status == "200" {
-          let parsedKids = CrummyJsonParser.parseJsonListKid(data)
-          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-              completionHandler(parsedKids, nil)
-          })
-        }
-      }
-    })
-    dataTask.resume()
+    //TODO: URLSESSION data task with request
+//    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+//      if error != nil {
+//        completionHandler(nil, error.description)
+//      } else {
+//        let status = self.statusResponse(response)
+//        if status == "200" {
+//          let parsedKids = CrummyJsonParser.parseJsonListKid(data)
+//          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//              completionHandler(parsedKids, nil)
+//          })
+//        }
+//      }
+//    })
+//    dataTask.resume()
   }
   
   func getKid(_ id: String, completionHandler: @escaping (Kid?, String?) -> (Void)) {
@@ -114,22 +125,23 @@ class CrummyApiService {
     if let token = UserDefaults.standard.object(forKey: "crummyToken") as? String {
       request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
     }
-    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-      if error != nil {
-        completionHandler(nil, error.description)
-      } else {
-        let status = self.statusResponse(response)
-        if status == "200" {
-          let editMenuKid = CrummyJsonParser.parseJsonGetKid(data)
-          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-            completionHandler(editMenuKid, nil)
-          })
-        } else {
-          completionHandler(nil,status)
-        }
-      }
-    })
-    dataTask.resume()
+    //TODO: URLSESSION data task with request
+//    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+//      if error != nil {
+//        completionHandler(nil, error.description)
+//      } else {
+//        let status = self.statusResponse(response)
+//        if status == "200" {
+//          let editMenuKid = CrummyJsonParser.parseJsonGetKid(data)
+//          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//            completionHandler(editMenuKid, nil)
+//          })
+//        } else {
+//          completionHandler(nil,status)
+//        }
+//      }
+//    })
+//    dataTask.resume()
   }
   
   func editKid(_ id: String, name: String, dobString: String?, insuranceID: String?, nursePhone: String?, notes: String?, completionHandler: @escaping (String?, String?) -> Void) {
@@ -154,31 +166,32 @@ class CrummyApiService {
       editedKid["notes"]  = kidNotes as AnyObject
     }
     
-    let data = NSJSONSerialization.dataWithJSONObject(editedKid, options: nil, error: &error)
-    let request = NSMutableURLRequest(URL: url!)
-    request.HTTPMethod = "PATCH"
-    request.HTTPBody = data
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    if let token = UserDefaults.standard.object(forKey: "crummyToken") as? String {
-      request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
-    }
-    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-      if error != nil {
-        completionHandler(nil, error.description)
-      } else {
-        let status = self.statusResponse(response)
-        if status == "200" {
-          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-            completionHandler(status, nil)
-          })
-        } else {
-          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-            completionHandler(nil, status)
-          })
-        }
-      }
-    })
-    dataTask.resume()
+    //TODO: URLSESSION data task with request
+//    let data = JSONSerialization.dataWithJSONObject(editedKid, options: nil, error: &error)
+//    let request = NSMutableURLRequest(url: url!)
+//    request.httpMethod = "PATCH"
+//    request.HTTPBody = data
+//    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//    if let token = UserDefaults.standard.object(forKey: "crummyToken") as? String {
+//      request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
+//    }
+//    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+//      if error != nil {
+//        completionHandler(nil, error.description)
+//      } else {
+//        let status = self.statusResponse(response)
+//        if status == "200" {
+//          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//            completionHandler(status, nil)
+//          })
+//        } else {
+//          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//            completionHandler(nil, status)
+//          })
+//        }
+//      }
+//    })
+//    dataTask.resume()
   }
 
   func deleteKid(_ id: String, completionHandler: @escaping (String) -> (Void)) {
@@ -192,21 +205,22 @@ class CrummyApiService {
     if let token = UserDefaults.standard.object(forKey: "crummyToken") as? String {
       request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
     }
-    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-      
-      let status = self.statusResponse(response)
-      if status == "200" {
-        
-        OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-          completionHandler(status)
-        })
-        } else {
-        OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-          completionHandler(status)
-        })
-      }
-    })
-    dataTask.resume()
+    //TODO: URLSESSION data task with request
+//    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+//      
+//      let status = self.statusResponse(response)
+//      if status == "200" {
+//        
+//        OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//          completionHandler(status)
+//        })
+//        } else {
+//        OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//          completionHandler(status)
+//        })
+//      }
+//    })
+//    dataTask.resume()
   }
   
   func postNewKid(_ name: String, dobString: String?, insuranceID: String?, nursePhone: String?, notes: String?, completionHandler: @escaping (String?, String?) -> Void) {
@@ -230,35 +244,38 @@ class CrummyApiService {
       editedKid["notes"]  = kidNotes as AnyObject
     }
     
-    let data = NSJSONSerialization.dataWithJSONObject(editedKid, options: nil, error: &error)
-    request.HTTPMethod = "POST"
-    request.HTTPBody = data
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    
-    // token
-    if let token = UserDefaults.standard.object(forKey: "crummyToken") as? String {
-      request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
-    }
+    //TODO: URLSESSION data task with request
+//    let data = JSONSerialization.dataWithJSONObject(editedKid, options: nil, error: &error)
+//    request.httpMethod = "POST"
+//    request.HTTPBody = data
+//    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//    // token
+//    if let token = UserDefaults.standard.object(forKey: "crummyToken") as? String {
+//      request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
+//    }
     //post
     
-    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-      let status = self.statusResponse(response)
-      var error: NSError?
-      if status == "201" || status == "200" {
-        if let jsonObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as? [String: AnyObject], let id = jsonObject["id"] as? Int {
-          let kidID = "\(id)"
-          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-            completionHandler(kidID, status)
-          })
-        }
-      } else {
-        OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-          completionHandler(nil, status)
-        })
-      }
-    })
+//    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+//      let status = self.statusResponse(response)
+//      var error: NSError?
     
-    dataTask.resume()
+    //TODO: SERIALIZE JSON
+//      if status == "201" || status == "200" {
+//        if let jsonObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as? [String: AnyObject], let id = jsonObject["id"] as? Int {
+//          let kidID = "\(id)"
+//          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//            completionHandler(kidID, status)
+//          })
+//        }
+//      } else {
+//        OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//          completionHandler(nil, status)
+//        })
+//      }
+//    })
+//
+//    dataTask.resume()
   } // postNewKid
 
   func getEvents(_ id: String, completionHandler: @escaping ([Event]?, String?) -> (Void)) {
@@ -270,22 +287,23 @@ class CrummyApiService {
       request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
     }
     request.setValue("application/json", forHTTPHeaderField: "Accept")
-    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-      if error != nil {
-        
-      } else {
-        if let httpResponse = response as? HTTPURLResponse {
-          if httpResponse.statusCode == 200 {
-            let events = CrummyJsonParser.parseEvents(data)
-            
-            OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-              completionHandler(events, nil)
-            })
-          }
-        }
-      }
-    })
-    dataTask.resume()
+    //TODO: URLSESSION data task with request
+//    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+//      if error != nil {
+//        
+//      } else {
+//        if let httpResponse = response as? HTTPURLResponse {
+//          if httpResponse.statusCode == 200 {
+//            let events = CrummyJsonParser.parseEvents(data)
+//            
+//            OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//              completionHandler(events, nil)
+//            })
+//          }
+//        }
+//      }
+//    })
+//    dataTask.resume()
   }
   
   func deleteEvent(_ kidId: String, eventId: String, completionHandler: @escaping (String?, String?) -> (Void)) {
@@ -296,20 +314,21 @@ class CrummyApiService {
     let request = NSMutableURLRequest(url: url!)
     request.httpMethod = "DELETE"
     request.setValue("Token token=nvZPt85uUZKh3itdoQkz", forHTTPHeaderField: "Authorization")
-    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-      if error != nil {
-        completionHandler(nil, error.description)
-      } else {
-        if let httpResponse = response as? HTTPURLResponse {
-          if httpResponse.statusCode == 204 {
-            OperationQueue.main.addOperation({ () -> Void in
-              completionHandler(eventId, nil)
-            })
-          }
-        }
-      }
-    })
-    dataTask.resume()
+    //TODO: URLSESSION data task with request
+//    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+//      if error != nil {
+//        completionHandler(nil, error.description)
+//      } else {
+//        if let httpResponse = response as? HTTPURLResponse {
+//          if httpResponse.statusCode == 204 {
+//            OperationQueue.main.addOperation({ () -> Void in
+//              completionHandler(eventId, nil)
+//            })
+//          }
+//        }
+//      }
+//    })
+//    dataTask.resume()
   }
   
   func createEvent(_ kidId: String, event: Event, completionHandler: @escaping (String?, String?) -> (Void)) {
@@ -341,33 +360,34 @@ class CrummyApiService {
     }
     
     
-    let data = NSJSONSerialization.dataWithJSONObject(newEvent, options: nil, error: &error)
-    
-    let request = NSMutableURLRequest(url: url!)
-    request.httpMethod = "POST"
-    request.HTTPBody = data
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    if let token = UserDefaults.standard.object(forKey: "crummyToken") as? String {
-      request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
-    }
-    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-      if error != nil {
-        completionHandler(nil, error.description)
-      } else {
-        if let httpResponse = response as? HTTPURLResponse {
-          if httpResponse.statusCode == 201 {
-            if data != nil {
-              if let id = CrummyJsonParser.getEventId(data) {
-                OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                  completionHandler(id, nil)
-                })
-              }
-            }
-          }
-        }
-      }
-    })
-    dataTask.resume()
+//    let data = JSONSerialization.dataWithJSONObject(newEvent, options: nil, error: &error)
+//
+//    let request = NSMutableURLRequest(url: url!)
+//    request.httpMethod = "POST"
+//    request.HTTPBody = data
+//    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//    if let token = UserDefaults.standard.object(forKey: "crummyToken") as? String {
+//      request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
+//    }
+    //TODO: URLSESSION data task with request
+//    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+//      if error != nil {
+//        completionHandler(nil, error.description)
+//      } else {
+//        if let httpResponse = response as? HTTPURLResponse {
+//          if httpResponse.statusCode == 201 {
+//            if data != nil {
+//              if let id = CrummyJsonParser.getEventId(data) {
+//                OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//                  completionHandler(id, nil)
+//                })
+//              }
+//            }
+//          }
+//        }
+//      }
+//    })
+//    dataTask.resume()
   }
   
   func editEvent(_ kidId: String, event: Event, completionHandler: @escaping (Event?, String?) -> (Void)) {
@@ -398,30 +418,32 @@ class CrummyApiService {
       updatedEvent["meds"] = eventMeds as AnyObject
     }
     
+    //TODO: SERIALIZE JSON
+//    let data = JSONSerialization.dataWithJSONObject(updatedEvent, options: nil, error: &error)
+//
+//    let request = NSMutableURLRequest(url: url!)
+//    request.httpMethod = "PATCH"
+//    request.HTTPBody = data
+//    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//    if let token = UserDefaults.standard.object(forKey: "crummyToken") as? String {
+//      request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
+//    }
     
-    let data = JSONSerialization.dataWithJSONObject(updatedEvent, options: nil, error: &error)
-    
-    let request = NSMutableURLRequest(url: url!)
-    request.httpMethod = "PATCH"
-    request.HTTPBody = data
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    if let token = UserDefaults.standard.object(forKey: "crummyToken") as? String {
-      request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
-    }
-    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-      if error != nil {
-        completionHandler(nil, error.description)
-      } else {
-        if let httpResponse = response as? HTTPURLResponse {
-          if httpResponse.statusCode == 200 {
-            OperationQueue.main.addOperation({ () -> Void in
-              completionHandler(event, nil)
-            })
-          }
-        }
-      }
-    })
-    dataTask.resume()
+    //TODO: URLSESSION data task with request
+//    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+//      if error != nil {
+//        completionHandler(nil, error.description)
+//      } else {
+//        if let httpResponse = response as? HTTPURLResponse {
+//          if httpResponse.statusCode == 200 {
+//            OperationQueue.main.addOperation({ () -> Void in
+//              completionHandler(event, nil)
+//            })
+//          }
+//        }
+//      }
+//    })
+//    dataTask.resume()
   }
   
   func statusResponse(_ response: URLResponse) -> String {

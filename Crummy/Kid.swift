@@ -13,21 +13,14 @@ class Kid {
   // properties
   
   var name : String
-  
   var DOBString : String?
   // VVV is this even being used?  VVV
   var dob : Date?
-  
   var insuranceId : String?
-  
   var nursePhone : String?
-  
   var kidImage : UIImage?
-  
   var kidID : String
-  
   var notes : String?
-  
   var events: [Event] = [Event]()
   
   
@@ -39,7 +32,9 @@ class Kid {
     // setting the NSDate DOB object based on the DOB string from user input.
     // http://stackoverflow.com/questions/24089999/how-do-you-create-a-swift-date-object
     // we want it formatted as Date of birth, formatted dd-mm-yyyy
-    // dob = NSDate(dateString: DOBString)
+    if let birthdate = DOBString {
+        dob = Date(dateString: birthdate)
+    }
     insuranceId = theInsuranceID
     nursePhone = theNursePhone
     kidID = theKidID
