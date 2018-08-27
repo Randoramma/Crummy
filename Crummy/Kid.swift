@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Kid {
+public class Kid {
   
   // properties
   
@@ -25,7 +25,7 @@ class Kid {
   
   
   // the Person Object
-  init(theName : String, theDOB : String?, theInsuranceID : String?, theNursePhone : String?, theNotes: String?, theKidID: String) {
+  public init(theName : String, theDOB : String?, theInsuranceID : String?, theNursePhone : String?, theNotes: String?, theKidID: String) {
     
     name = theName
     DOBString = theDOB
@@ -43,7 +43,7 @@ class Kid {
   } // init
   
   //convenienc init when needing an empty Kid object
-  init() {
+  public init() {
     self.events = [Event]()
     self.name = ""
     self.DOBString = ""
