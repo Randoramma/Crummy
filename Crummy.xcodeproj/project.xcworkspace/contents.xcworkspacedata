@@ -2,6 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Crummy.xcodeproj">
+      location = "group:/Users/randymclain/iOS Development/sea-d34-iOS/Crummy/Crummy/Crummy-Bridging-Header.h">
+   </FileRef>
+   <FileRef
+      location = "group:../Crummy/BH.h">
+   </FileRef>
+   <FileRef
+      location = "group:../Crummy/BH.m">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/randymclain/iOS Development/sea-d34-iOS/Crummy/Crummy/GoogleService-Info.plist">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

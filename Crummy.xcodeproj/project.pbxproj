@@ -37,16 +37,30 @@
 		43DF35FD1AE5600F00D567D2 /* EditMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DF35FC1AE5600F00D567D2 /* EditMenuViewController.swift */; };
 		43DF36011AE5655200D567D2 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DF36001AE5655200D567D2 /* HomeCollectionViewCell.swift */; };
 		43E7D64A1AE57DE40014B86F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E7D6491AE57DE40014B86F /* StringExtension.swift */; };
-		D00FFCC921344FD4008CDA0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D00FFCC821344FD4008CDA0A /* GoogleService-Info.plist */; };
 		D0385B5E1AE5BF6C007FE10E /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0385B5D1AE5BF6C007FE10E /* DatePickerViewController.swift */; };
 		D06A1D2B1AE5625F0081CEDD /* Kid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06A1D2A1AE5625F0081CEDD /* Kid.swift */; };
 		D06A1D2D1AE56D2A0081CEDD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06A1D2C1AE56D2A0081CEDD /* DateExtension.swift */; };
+		D083EA6C2136FB0F004F4E7E /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA602136F917004F4E7E /* FirebaseAnalytics.framework */; };
+		D083EA6D2136FB0F004F4E7E /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA5F2136F917004F4E7E /* FirebaseCore.framework */; };
+		D083EA6E2136FB0F004F4E7E /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA5D2136F916004F4E7E /* FirebaseCoreDiagnostics.framework */; };
+		D083EA6F2136FB0F004F4E7E /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA5C2136F916004F4E7E /* FirebaseInstanceID.framework */; };
+		D083EA702136FB0F004F4E7E /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA5B2136F916004F4E7E /* GoogleAppMeasurement.framework */; };
+		D083EA712136FB0F004F4E7E /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA612136F917004F4E7E /* GoogleUtilities.framework */; };
+		D083EA722136FB0F004F4E7E /* MeasurementNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA5A2136F916004F4E7E /* MeasurementNanoPB.framework */; };
+		D083EA732136FB0F004F4E7E /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA5E2136F916004F4E7E /* nanopb.framework */; };
+		D083EA752136FC16004F4E7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D083EA742136FC16004F4E7E /* GoogleService-Info.plist */; };
+		D083EA7E21384DF3004F4E7E /* gRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA7621384DF2004F4E7E /* gRPC.framework */; };
+		D083EA7F21384DF3004F4E7E /* gRPC-Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA7721384DF2004F4E7E /* gRPC-Core.framework */; };
+		D083EA8021384DF3004F4E7E /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA7821384DF2004F4E7E /* leveldb-library.framework */; };
+		D083EA8121384DF3004F4E7E /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA7921384DF2004F4E7E /* Protobuf.framework */; };
+		D083EA8221384DF3004F4E7E /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA7A21384DF3004F4E7E /* BoringSSL.framework */; };
+		D083EA8321384DF3004F4E7E /* gRPC-RxLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA7B21384DF3004F4E7E /* gRPC-RxLibrary.framework */; };
+		D083EA8421384DF3004F4E7E /* gRPC-ProtoRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA7C21384DF3004F4E7E /* gRPC-ProtoRPC.framework */; };
+		D083EA8521384DF3004F4E7E /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D083EA7D21384DF3004F4E7E /* FirebaseFirestore.framework */; };
 		D092FD9E1AE9DC0F002198B9 /* PhoneCellContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D092FD9D1AE9DC0F002198B9 /* PhoneCellContainerView.xib */; };
 		D092FDA01AE9E1D2002198B9 /* PhoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D092FD9F1AE9E1D2002198B9 /* PhoneTableViewCell.swift */; };
 		D09AF0551AF64D3700518949 /* DateObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09AF0541AF64D3700518949 /* DateObjects.swift */; };
 		D0B724CA1AE6D55900AFF02C /* EditKidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B724C91AE6D55900AFF02C /* EditKidViewController.swift */; };
-		D0C0781C205EB7D600DA33F7 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C0781B205EB7D600DA33F7 /* CloudKit.framework */; };
-		D0F878AD1AE8501D005B0164 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		D0FC24B92117F73A00DBE252 /* Kit_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC24B82117F73A00DBE252 /* Kit_Tests.swift */; };
 		F412A8191AE57BC8005EB19F /* EditMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F412A8181AE57BC8005EB19F /* EditMenuTableViewCell.swift */; };
 		F43CFA9A1AE6EC1E00430355 /* CrummyJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43CFA991AE6EC1E00430355 /* CrummyJsonParser.swift */; };
@@ -98,16 +112,34 @@
 		43DF35FC1AE5600F00D567D2 /* EditMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMenuViewController.swift; sourceTree = "<group>"; };
 		43DF36001AE5655200D567D2 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		43E7D6491AE57DE40014B86F /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		D00FFCC821344FD4008CDA0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D0385B5D1AE5BF6C007FE10E /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerViewController.swift; path = ../DatePickerViewController.swift; sourceTree = "<group>"; };
+		D0385B5D1AE5BF6C007FE10E /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		D0574BA5205EB1EB0099C324 /* Crummy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Crummy.entitlements; sourceTree = "<group>"; };
 		D06A1D2A1AE5625F0081CEDD /* Kid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kid.swift; sourceTree = "<group>"; };
-		D06A1D2C1AE56D2A0081CEDD /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateExtension.swift; path = ../DateExtension.swift; sourceTree = "<group>"; };
-		D092FD9D1AE9DC0F002198B9 /* PhoneCellContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhoneCellContainerView.xib; path = ../PhoneCellContainerView.xib; sourceTree = "<group>"; };
-		D092FD9F1AE9E1D2002198B9 /* PhoneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhoneTableViewCell.swift; path = ../PhoneTableViewCell.swift; sourceTree = "<group>"; };
-		D09AF0541AF64D3700518949 /* DateObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateObjects.swift; path = ../DateObjects.swift; sourceTree = "<group>"; };
-		D0B724C91AE6D55900AFF02C /* EditKidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditKidViewController.swift; path = ../EditKidViewController.swift; sourceTree = "<group>"; };
-		D0C0781B205EB7D600DA33F7 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		D06A1D2C1AE56D2A0081CEDD /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		D083EA592136F6A2004F4E7E /* Crummy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Crummy-Bridging-Header.h"; path = "/Users/randymclain/iOS Development/sea-d34-iOS/Crummy/Crummy-Bridging-Header.h"; sourceTree = "<absolute>"; };
+		D083EA5A2136F916004F4E7E /* MeasurementNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MeasurementNanoPB.framework; path = Crummy/Firebase/Analytics/MeasurementNanoPB.framework; sourceTree = "<group>"; };
+		D083EA5B2136F916004F4E7E /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Crummy/Firebase/Analytics/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		D083EA5C2136F916004F4E7E /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Crummy/Firebase/Analytics/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		D083EA5D2136F916004F4E7E /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Crummy/Firebase/Analytics/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		D083EA5E2136F916004F4E7E /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Crummy/Firebase/Analytics/nanopb.framework; sourceTree = "<group>"; };
+		D083EA5F2136F917004F4E7E /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Crummy/Firebase/Analytics/FirebaseCore.framework; sourceTree = "<group>"; };
+		D083EA602136F917004F4E7E /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Crummy/Firebase/Analytics/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		D083EA612136F917004F4E7E /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Crummy/Firebase/Analytics/GoogleUtilities.framework; sourceTree = "<group>"; };
+		D083EA6A2136F93E004F4E7E /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		D083EA6B2136F996004F4E7E /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		D083EA742136FC16004F4E7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D083EA7621384DF2004F4E7E /* gRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gRPC.framework; path = Crummy/Firebase/Firestore/gRPC.framework; sourceTree = "<group>"; };
+		D083EA7721384DF2004F4E7E /* gRPC-Core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "gRPC-Core.framework"; path = "Crummy/Firebase/Firestore/gRPC-Core.framework"; sourceTree = "<group>"; };
+		D083EA7821384DF2004F4E7E /* leveldb-library.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "leveldb-library.framework"; path = "Crummy/Firebase/Firestore/leveldb-library.framework"; sourceTree = "<group>"; };
+		D083EA7921384DF2004F4E7E /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Protobuf.framework; path = Crummy/Firebase/Firestore/Protobuf.framework; sourceTree = "<group>"; };
+		D083EA7A21384DF3004F4E7E /* BoringSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoringSSL.framework; path = Crummy/Firebase/Firestore/BoringSSL.framework; sourceTree = "<group>"; };
+		D083EA7B21384DF3004F4E7E /* gRPC-RxLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "gRPC-RxLibrary.framework"; path = "Crummy/Firebase/Firestore/gRPC-RxLibrary.framework"; sourceTree = "<group>"; };
+		D083EA7C21384DF3004F4E7E /* gRPC-ProtoRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "gRPC-ProtoRPC.framework"; path = "Crummy/Firebase/Firestore/gRPC-ProtoRPC.framework"; sourceTree = "<group>"; };
+		D083EA7D21384DF3004F4E7E /* FirebaseFirestore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseFirestore.framework; path = Crummy/Firebase/Firestore/FirebaseFirestore.framework; sourceTree = "<group>"; };
+		D092FD9D1AE9DC0F002198B9 /* PhoneCellContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneCellContainerView.xib; sourceTree = "<group>"; };
+		D092FD9F1AE9E1D2002198B9 /* PhoneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneTableViewCell.swift; sourceTree = "<group>"; };
+		D09AF0541AF64D3700518949 /* DateObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateObjects.swift; sourceTree = "<group>"; };
+		D0B724C91AE6D55900AFF02C /* EditKidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditKidViewController.swift; sourceTree = "<group>"; };
 		D0FC24B82117F73A00DBE252 /* Kit_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit_Tests.swift; sourceTree = "<group>"; };
 		F412A8181AE57BC8005EB19F /* EditMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMenuTableViewCell.swift; sourceTree = "<group>"; };
 		F43CFA991AE6EC1E00430355 /* CrummyJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrummyJsonParser.swift; sourceTree = "<group>"; };
@@ -119,7 +151,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0C0781C205EB7D600DA33F7 /* CloudKit.framework in Frameworks */,
+				D083EA7E21384DF3004F4E7E /* gRPC.framework in Frameworks */,
+				D083EA7F21384DF3004F4E7E /* gRPC-Core.framework in Frameworks */,
+				D083EA8021384DF3004F4E7E /* leveldb-library.framework in Frameworks */,
+				D083EA8121384DF3004F4E7E /* Protobuf.framework in Frameworks */,
+				D083EA8221384DF3004F4E7E /* BoringSSL.framework in Frameworks */,
+				D083EA8321384DF3004F4E7E /* gRPC-RxLibrary.framework in Frameworks */,
+				D083EA8421384DF3004F4E7E /* gRPC-ProtoRPC.framework in Frameworks */,
+				D083EA8521384DF3004F4E7E /* FirebaseFirestore.framework in Frameworks */,
+				D083EA6C2136FB0F004F4E7E /* FirebaseAnalytics.framework in Frameworks */,
+				D083EA6D2136FB0F004F4E7E /* FirebaseCore.framework in Frameworks */,
+				D083EA6E2136FB0F004F4E7E /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				D083EA6F2136FB0F004F4E7E /* FirebaseInstanceID.framework in Frameworks */,
+				D083EA702136FB0F004F4E7E /* GoogleAppMeasurement.framework in Frameworks */,
+				D083EA712136FB0F004F4E7E /* GoogleUtilities.framework in Frameworks */,
+				D083EA722136FB0F004F4E7E /* MeasurementNanoPB.framework in Frameworks */,
+				D083EA732136FB0F004F4E7E /* nanopb.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,8 +217,11 @@
 		431E22891AE55D9600A831CB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D083EA742136FC16004F4E7E /* GoogleService-Info.plist */,
+				D083EA6B2136F996004F4E7E /* Firebase.h */,
+				D083EA6A2136F93E004F4E7E /* module.modulemap */,
+				D083EA592136F6A2004F4E7E /* Crummy-Bridging-Header.h */,
 				D06A1D2C1AE56D2A0081CEDD /* DateExtension.swift */,
-				D00FFCC821344FD4008CDA0A /* GoogleService-Info.plist */,
 				431E228A1AE55D9600A831CB /* Info.plist */,
 				43E7D6491AE57DE40014B86F /* StringExtension.swift */,
 			);
@@ -278,7 +328,22 @@
 		D0C0781A205EB7D600DA33F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D0C0781B205EB7D600DA33F7 /* CloudKit.framework */,
+				D083EA7A21384DF3004F4E7E /* BoringSSL.framework */,
+				D083EA7D21384DF3004F4E7E /* FirebaseFirestore.framework */,
+				D083EA7721384DF2004F4E7E /* gRPC-Core.framework */,
+				D083EA7C21384DF3004F4E7E /* gRPC-ProtoRPC.framework */,
+				D083EA7B21384DF3004F4E7E /* gRPC-RxLibrary.framework */,
+				D083EA7621384DF2004F4E7E /* gRPC.framework */,
+				D083EA7821384DF2004F4E7E /* leveldb-library.framework */,
+				D083EA7921384DF2004F4E7E /* Protobuf.framework */,
+				D083EA602136F917004F4E7E /* FirebaseAnalytics.framework */,
+				D083EA5F2136F917004F4E7E /* FirebaseCore.framework */,
+				D083EA5D2136F916004F4E7E /* FirebaseCoreDiagnostics.framework */,
+				D083EA5C2136F916004F4E7E /* FirebaseInstanceID.framework */,
+				D083EA5B2136F916004F4E7E /* GoogleAppMeasurement.framework */,
+				D083EA612136F917004F4E7E /* GoogleUtilities.framework */,
+				D083EA5A2136F916004F4E7E /* MeasurementNanoPB.framework */,
+				D083EA5E2136F916004F4E7E /* nanopb.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -333,13 +398,13 @@
 					431E22851AE55D9600A831CB = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = QWRJC78833;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0940;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -374,7 +439,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D00FFCC921344FD4008CDA0A /* GoogleService-Info.plist in Resources */,
 				43723F291AE6F18700543B7E /* MedicationTableViewCell.xib in Resources */,
 				43723F331AE6FA7D00543B7E /* MedicationContainerView.xib in Resources */,
 				43723F3C1AE715EE00543B7E /* SymptomsTableViewCell.xib in Resources */,
@@ -388,6 +452,7 @@
 				431E22931AE55D9600A831CB /* Images.xcassets in Resources */,
 				43723F3A1AE714BB00543B7E /* TemperatureTableViewCell.xib in Resources */,
 				43723F311AE6F92A00543B7E /* SymptomsContainerView.xib in Resources */,
+				D083EA752136FC16004F4E7E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,7 +470,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0F878AD1AE8501D005B0164 /* (null) in Sources */,
 				43723F441AE719BB00543B7E /* SymptomsTableViewCell.swift in Sources */,
 				43DF36011AE5655200D567D2 /* HomeCollectionViewCell.swift in Sources */,
 				D09AF0551AF64D3700518949 /* DateObjects.swift in Sources */,
@@ -579,16 +643,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Crummy/Crummy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = QWRJC78833;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Crummy/Firebase/**",
+					"$(PROJECT_DIR)/Crummy/Firebase/Firestore",
+				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Crummy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CF.Crummy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Crummy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -596,16 +674,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Crummy/Crummy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = QWRJC78833;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Crummy/Firebase/**",
+					"$(PROJECT_DIR)/Crummy/Firebase/Firestore",
+				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Crummy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CF.Crummy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Crummy-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

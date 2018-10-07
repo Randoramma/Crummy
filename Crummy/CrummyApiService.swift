@@ -20,7 +20,7 @@ class CrummyApiService {
     
     static let sharedInstance: CrummyApiService = CrummyApiService()
     
-    let baseUrl = "http://crummy.herokuapp.com/api/v1"
+    let baseUrl = "https://crummy.herokuapp.com/api/v1"
     
     func postLogin(_ username: String, password: String, completionHandler: @escaping (String?, String?) -> (Void)) {
         
@@ -32,11 +32,11 @@ class CrummyApiService {
         let dataTask = session.dataTask(with: request) { (data, response, error) in
             
             guard error == nil else {
-                print(error?.localizedDescription ?? "Default Error Message: Error at: GET request (http://crummy.herokuapp.com/api/v1/sessions)")
+                print(error?.localizedDescription ?? "Default Error Message: Error at: GET request (https://crummy.herokuapp.com/api/v1/sessions)")
                 return
             }
             guard let responseData = data else {
-                assert(false, "Recieved no data for GET request (http://crummy.herokuapp.com/api/v1/sessions)")
+                assert(false, "Recieved no data for GET request (https://crummy.herokuapp.com/api/v1/sessions)")
                 return
             }
             let status = self.statusResponse(response!)
@@ -69,28 +69,28 @@ class CrummyApiService {
         let request = requestBuilder(username: username, password: password, token: nil)
         
         //TODO: URLSESSION data task with request
-        //    let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-        //      if error != nil {
-        //        completionHandler(nil, error.description)
-        //      } else {
-        //        let status = self.statusResponse(response)
-        //        if status == "200" {
-        //          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-        //            completionHandler(status, nil)
-        //          })
-        //        } else {
-        //          OperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-        //            completionHandler(nil, status)
-        //          })
-        //        }
-        //      }
-        //    })
-        //    dataTask.resume()
+            let dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+              if error != nil {
+                completionHandler(nil, error.debugDescription)
+              } else {
+                let status = self.statusResponse(response!)
+                if status == "200" {
+                    DispatchQueue.main.async(execute: {
+                        completionHandler(status, nil)
+                    })
+                } else {
+                    DispatchQueue.main.async(execute: {
+                        completionHandler(nil, status)
+                    })
+                }
+              }
+            })
+            dataTask.resume()
     }
     
     func listKid(_ completionHandler: @escaping ([Kid]?, String?) -> (Void)) {
         
-        let requestUrl = "http://crummy.herokuapp.com/api/v1/kids"
+        let requestUrl = "https://crummy.herokuapp.com/api/v1/kids"
         
         let url = URL(string: requestUrl)
         let request = NSMutableURLRequest(url: url!)
@@ -116,7 +116,7 @@ class CrummyApiService {
     
     func getKid(_ id: String, completionHandler: @escaping (Kid?, String?) -> (Void)) {
         
-        let kidIdUrl = "http://crummy.herokuapp.com/api/v1/kids/"
+        let kidIdUrl = "https://crummy.herokuapp.com/api/v1/kids/"
         let queryString = id
         let requestUrl = kidIdUrl + queryString
         let url = URL(string: requestUrl)
@@ -146,7 +146,7 @@ class CrummyApiService {
     }
     
     func editKid(_ id: String, name: String, dobString: String?, insuranceID: String?, nursePhone: String?, notes: String?, completionHandler: @escaping (String?, String?) -> Void) {
-        let kidIdUrl = "http://crummy.herokuapp.com/api/v1/kids/"
+        let kidIdUrl = "https://crummy.herokuapp.com/api/v1/kids/"
         let queryString = id
         let requestUrl = kidIdUrl + queryString
         let url = URL(string: requestUrl)
@@ -197,7 +197,7 @@ class CrummyApiService {
     
     func deleteKid(_ id: String, completionHandler: @escaping (String) -> (Void)) {
         
-        let kidIdUrl = "http://crummy.herokuapp.com/api/v1/kids/"
+        let kidIdUrl = "https://crummy.herokuapp.com/api/v1/kids/"
         let queryString = id
         let requestUrl = kidIdUrl + queryString
         let url = URL(string: requestUrl)
@@ -226,7 +226,7 @@ class CrummyApiService {
     
     func postNewKid(_ name: String, dobString: String?, insuranceID: String?, nursePhone: String?, notes: String?, completionHandler: @escaping (String?, String?) -> Void) {
         // url
-        let requestUrl = "http://crummy.herokuapp.com/api/v1/kids"
+        let requestUrl = "https://crummy.herokuapp.com/api/v1/kids"
         let url = URL(string: requestUrl)
         var request = NSMutableURLRequest(url: url!)
         var error: NSError?
@@ -309,7 +309,7 @@ class CrummyApiService {
     
     func deleteEvent(_ kidId: String, eventId: String, completionHandler: @escaping (String?, String?) -> (Void)) {
         let deleteEventUrl = "\(self.baseUrl)/kids/\(kidId)/events/\(eventId)"
-        //    let deleteEventUrl = "http://crummy.herokuapp.com/api/v1/kids/45/events/144"
+        //    let deleteEventUrl = "https://crummy.herokuapp.com/api/v1/kids/45/events/144"
         let url = URL(string: deleteEventUrl)
         
         let request = NSMutableURLRequest(url: url!)
@@ -450,13 +450,13 @@ class CrummyApiService {
     fileprivate func requestBuilder(username usr: String?, password pw: String?,  token tk: String? )-> URLRequest {
         
         // Types of requests
-        //"http://crummy.herokuapp.com/api/v1/sessions"
-        //"http://crummy.herokuapp.com/api/v1/kids"
-        //"http://crummy.herokuapp.com/api/v1/kids/45/events/144"
+        //"https://crummy.herokuapp.com/api/v1/sessions"
+        //"https://crummy.herokuapp.com/api/v1/kids"
+        //"https://crummy.herokuapp.com/api/v1/kids/45/events/144"
         //"\(self.baseUrl)/kids/\(kidId)/events/\(event.id!)
         //
         /*
-         let requestUrl = "http://crummy.herokuapp.com/api/v1/kids"
+         let requestUrl = "https://crummy.herokuapp.com/api/v1/kids"
          
          let url = URL(string: requestUrl)
          let request = NSMutableURLRequest(url: url!)
@@ -464,7 +464,7 @@ class CrummyApiService {
          request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
          }
          */
-        let url: URL = URL(string: "http://crummy.herokuapp.com/api/v1/sessions")!
+        let url: URL = URL(string: "https://crummy.herokuapp.com/api/v1/sessions")!
         let data: Data
         var request = URLRequest(url: url)
         if let username = usr {
