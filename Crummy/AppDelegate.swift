@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 CF. All rights reserved.
 //
 import UIKit
-import FirebaseAnalytics
+//import FirebaseAnalytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           window?.rootViewController = homeViewController
       }
     }
-    FirebaseApp.configure()
+    //FirebaseApp.configure()
     return true
   }
 
