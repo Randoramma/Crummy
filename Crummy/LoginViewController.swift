@@ -60,7 +60,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CreateUserView
     })
   }
   
-  func dismissKeyboard() {
+    @objc func dismissKeyboard() {
     self.usernameTextField.resignFirstResponder()
     self.passwordTextField.resignFirstResponder()
   }

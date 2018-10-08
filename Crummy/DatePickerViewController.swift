@@ -17,13 +17,13 @@ class DatePickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
    
-      datePicker.addTarget(self, action: #selector(DatePickerViewController.datePickerChanged(_:)), for: UIControlEvents.valueChanged)
+      datePicker.addTarget(self, action: #selector(DatePickerViewController.datePickerChanged(_:)), for: UIControl.Event.valueChanged)
     }
   
   
   // func to set the date from the picker if no date is set.
   // https://github.com/ioscreator/ioscreator/blob/master/IOSSwiftDatePickerTutorial/IOSSwiftDatePickerTutorial/ViewController.swift
-  func datePickerChanged(_ datePicker:UIDatePicker) {
+    @objc func datePickerChanged(_ datePicker:UIDatePicker) {
     let dateFormatter = DateFormatter()
     
     dateFormatter.dateStyle = DateFormatter.Style.short

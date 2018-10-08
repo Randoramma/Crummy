@@ -83,7 +83,7 @@ class CreateUserViewController: UIViewController, UITextFieldDelegate {
     dismiss(animated: true, completion: nil)
   }
   
-  func dismissKeyboard() {
+    @objc func dismissKeyboard() {
     self.usernameTextField.resignFirstResponder()
     self.passwordTextField.resignFirstResponder()
   }

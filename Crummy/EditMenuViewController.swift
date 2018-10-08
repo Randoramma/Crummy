@@ -85,7 +85,7 @@ class EditMenuViewController: UIViewController, UITableViewDelegate, UITableView
     performSegue(withIdentifier: "ShowEditKidVC", sender: EditMenuViewController.self)
   }
   
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     
     let selectedMunchkin = self.kidList?[indexPath.row]
     let id = selectedMunchkin?.kidID

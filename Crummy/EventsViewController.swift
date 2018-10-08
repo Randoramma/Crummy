@@ -106,7 +106,7 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         
         self.getEventsByType(nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(EventsViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EventsViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     //MARK:
@@ -162,11 +162,11 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
             self.currentContainerView = medicationView
             medicationView.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview(medicationView)
-            self.view.addConstraint(NSLayoutConstraint(item: medicationView, attribute: NSLayoutAttribute.trailing, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0))
-            self.view.addConstraint(NSLayoutConstraint(item: medicationView, attribute: NSLayoutAttribute.leading, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0))
-            self.constraintContainerViewBottom =  NSLayoutConstraint(item: medicationView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+            self.view.addConstraint(NSLayoutConstraint(item: medicationView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0))
+            self.view.addConstraint(NSLayoutConstraint(item: medicationView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0))
+            self.constraintContainerViewBottom =  NSLayoutConstraint(item: medicationView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
             self.view.addConstraint(self.constraintContainerViewBottom!)
-            medicationView.addConstraint(NSLayoutConstraint(item: medicationView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: self.medicationContainerViewHeight))
+            medicationView.addConstraint(NSLayoutConstraint(item: medicationView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1.0, constant: self.medicationContainerViewHeight))
             self.medicationTextField.delegate = self
         } else if sender == self.measurementButton {
             self.selectedType = EventType.measurement
@@ -174,11 +174,11 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
             self.currentContainerView = measurementView
             self.view.addSubview(measurementView)
             measurementView.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addConstraint(NSLayoutConstraint(item: measurementView, attribute: NSLayoutAttribute.trailing, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0))
-            self.view.addConstraint(NSLayoutConstraint(item: measurementView, attribute: NSLayoutAttribute.leading, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0))
-            self.constraintContainerViewBottom =  NSLayoutConstraint(item: measurementView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+            self.view.addConstraint(NSLayoutConstraint(item: measurementView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0))
+            self.view.addConstraint(NSLayoutConstraint(item: measurementView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0))
+            self.constraintContainerViewBottom =  NSLayoutConstraint(item: measurementView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
             self.view.addConstraint(self.constraintContainerViewBottom!)
-            measurementView.addConstraint(NSLayoutConstraint(item: measurementView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: self.measurementsContainerViewHeight))
+            measurementView.addConstraint(NSLayoutConstraint(item: measurementView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1.0, constant: self.measurementsContainerViewHeight))
             self.measurementsHeightTextField.delegate = self
             self.measurementWeightTextField.delegate = self
         } else if sender == self.symptomButton {
@@ -187,11 +187,11 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
             self.currentContainerView = symptomsView
             self.view.addSubview(symptomsView)
             symptomsView.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addConstraint(NSLayoutConstraint(item: symptomsView, attribute: NSLayoutAttribute.trailing, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0))
-            self.view.addConstraint(NSLayoutConstraint(item: symptomsView, attribute: NSLayoutAttribute.leading, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0))
-            self.constraintContainerViewBottom =  NSLayoutConstraint(item: symptomsView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+            self.view.addConstraint(NSLayoutConstraint(item: symptomsView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0))
+            self.view.addConstraint(NSLayoutConstraint(item: symptomsView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0))
+            self.constraintContainerViewBottom =  NSLayoutConstraint(item: symptomsView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
             self.view.addConstraint(self.constraintContainerViewBottom!)
-            symptomsView.addConstraint(NSLayoutConstraint(item: symptomsView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: self.symptomsContainerViewHeight))
+            symptomsView.addConstraint(NSLayoutConstraint(item: symptomsView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1.0, constant: self.symptomsContainerViewHeight))
             self.symptomsTextField.delegate = self
         } else if sender == self.temperatureButton {
             self.selectedType = EventType.temperature
@@ -199,11 +199,11 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
             self.currentContainerView = temperatureView
             self.view.addSubview(temperatureView)
             temperatureView.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addConstraint(NSLayoutConstraint(item: temperatureView, attribute: NSLayoutAttribute.trailing, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0))
-            self.view.addConstraint(NSLayoutConstraint(item: temperatureView, attribute: NSLayoutAttribute.leading, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0))
-            self.constraintContainerViewBottom =  NSLayoutConstraint(item: temperatureView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+            self.view.addConstraint(NSLayoutConstraint(item: temperatureView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0))
+            self.view.addConstraint(NSLayoutConstraint(item: temperatureView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0))
+            self.constraintContainerViewBottom =  NSLayoutConstraint(item: temperatureView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
             self.view.addConstraint(self.constraintContainerViewBottom!)
-            temperatureView.addConstraint(NSLayoutConstraint(item: temperatureView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: self.temperatureContainerViewHeight))
+            temperatureView.addConstraint(NSLayoutConstraint(item: temperatureView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1.0, constant: self.temperatureContainerViewHeight))
             self.temperatureTextField.delegate = self
         }
         let containerBarColor = UIColor(patternImage: UIImage(named: "ContainerViewBar")!)
@@ -236,9 +236,9 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         self.selectedType = nil
     }
     
-    func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         if let userInfo = notification.userInfo {
-            if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if let keyboardSize = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
                 self.keyboardHeight = keyboardSize.height
                 self.constraintContainerViewBottom?.constant = -self.keyboardHeight
                 UIView.animate(withDuration: self.animationDuration, animations: { () -> Void in
@@ -268,7 +268,7 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         })
     }
     
-    func duplicatePressed(_ sender: UIButton) {
+    @objc func duplicatePressed(_ sender: UIButton) {
         if self.currentCell != nil {
             return
         }
@@ -448,7 +448,7 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         }
     }
     
-    func showDatePicker(_ button: UIButton) {
+    @objc func showDatePicker(_ button: UIButton) {
         if self.currentCell != nil {
             return
         }
@@ -571,7 +571,7 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         }
     }
     
-    func doneNumberPadPressed(_ barButton: UIBarButtonItem) {
+    @objc func doneNumberPadPressed(_ barButton: UIBarButtonItem) {
         self.currentTextField!.resignFirstResponder()
         if self.contentOffsetChangeAmount != nil {
             self.tableView.contentOffset.y -= self.contentOffsetChangeAmount!
@@ -603,8 +603,8 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
                 }
                 let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.toolBarHeight))
                 toolBar.barStyle = UIBarStyle.default
-                let doneBarButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(EventsViewController.doneNumberPadPressed(_:)))
-                toolBar.items = [UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil),doneBarButton]
+                let doneBarButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(EventsViewController.doneNumberPadPressed(_:)))
+                toolBar.items = [UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil),doneBarButton]
                 toolBar.sizeToFit()
                 textField.inputAccessoryView = toolBar
             } else if eventType == EventType.symptom {
@@ -629,40 +629,40 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         if event.type == EventType.medication {
             let medicationCell = tableView.dequeueReusableCell(withIdentifier: "MedicationCell", for: indexPath) as! MedicationTableViewCell
             medicationCell.medicationLabel.text = nil
-            medicationCell.timeButton.setTitle(nil, for: UIControlState())
+            medicationCell.timeButton.setTitle(nil, for: UIControl.State())
             medicationCell.medicationLabel.text = event.medication
-            medicationCell.timeButton.setTitle(self.dateFormatter.string(from: event.date as Date), for: UIControlState())
-            medicationCell.timeButton.addTarget(self, action: #selector(EventsViewController.showDatePicker(_:)), for: UIControlEvents.touchUpInside)
-            medicationCell.duplicateButton.addTarget(self, action: #selector(EventsViewController.duplicatePressed(_:)), for: UIControlEvents.touchUpInside)
+            medicationCell.timeButton.setTitle(self.dateFormatter.string(from: event.date as Date), for: UIControl.State())
+            medicationCell.timeButton.addTarget(self, action: #selector(EventsViewController.showDatePicker(_:)), for: UIControl.Event.touchUpInside)
+            medicationCell.duplicateButton.addTarget(self, action: #selector(EventsViewController.duplicatePressed(_:)), for: UIControl.Event.touchUpInside)
             return medicationCell
         } else if event.type == EventType.measurement {
             let measurementCell = tableView.dequeueReusableCell(withIdentifier: "MeasurementCell", for: indexPath) as! MeasurementTableViewCell
             measurementCell.heightLabel.text = nil
             measurementCell.weightLabel.text = nil
-            measurementCell.timeButton.setTitle(nil, for: UIControlState())
+            measurementCell.timeButton.setTitle(nil, for: UIControl.State())
             measurementCell.weightLabel.text = event.weight
             measurementCell.heightLabel.text = event.height
-            measurementCell.timeButton.setTitle(self.dateFormatter.string(from: event.date as Date), for: UIControlState())
-            measurementCell.timeButton.addTarget(self, action: #selector(EventsViewController.showDatePicker(_:)), for: UIControlEvents.touchUpInside)
-            measurementCell.duplicateButton.addTarget(self, action: #selector(EventsViewController.duplicatePressed(_:)), for: UIControlEvents.touchUpInside)
+            measurementCell.timeButton.setTitle(self.dateFormatter.string(from: event.date as Date), for: UIControl.State())
+            measurementCell.timeButton.addTarget(self, action: #selector(EventsViewController.showDatePicker(_:)), for: UIControl.Event.touchUpInside)
+            measurementCell.duplicateButton.addTarget(self, action: #selector(EventsViewController.duplicatePressed(_:)), for: UIControl.Event.touchUpInside)
             return measurementCell
         } else if event.type == EventType.symptom {
             let symptomCell = tableView.dequeueReusableCell(withIdentifier: "SymptomCell", for: indexPath) as! SymptomsTableViewCell
             symptomCell.symptomsLabel.text = nil
-            symptomCell.timeButton.setTitle(nil, for: UIControlState())
+            symptomCell.timeButton.setTitle(nil, for: UIControl.State())
             symptomCell.symptomsLabel.text = event.symptom
-            symptomCell.timeButton.setTitle(self.dateFormatter.string(from: event.date as Date), for: UIControlState())
-            symptomCell.timeButton.addTarget(self, action: #selector(EventsViewController.showDatePicker(_:)), for: UIControlEvents.touchUpInside)
-            symptomCell.duplicateButton.addTarget(self, action: #selector(EventsViewController.duplicatePressed(_:)), for: UIControlEvents.touchUpInside)
+            symptomCell.timeButton.setTitle(self.dateFormatter.string(from: event.date as Date), for: UIControl.State())
+            symptomCell.timeButton.addTarget(self, action: #selector(EventsViewController.showDatePicker(_:)), for: UIControl.Event.touchUpInside)
+            symptomCell.duplicateButton.addTarget(self, action: #selector(EventsViewController.duplicatePressed(_:)), for: UIControl.Event.touchUpInside)
             return symptomCell
         } else {
             let temperatureCell = tableView.dequeueReusableCell(withIdentifier: "TemperatureCell", for: indexPath) as! TemperatureTableViewCell
             temperatureCell.temperatureLabel.text = nil
-            temperatureCell.timeButton.setTitle(nil, for: UIControlState())
+            temperatureCell.timeButton.setTitle(nil, for: UIControl.State())
             temperatureCell.temperatureLabel.text = event.temperature
-            temperatureCell.timeButton.setTitle(self.dateFormatter.string(from: event.date as Date), for: UIControlState())
-            temperatureCell.timeButton.addTarget(self, action: #selector(EventsViewController.showDatePicker(_:)), for: UIControlEvents.touchUpInside)
-            temperatureCell.duplicateButton.addTarget(self, action: #selector(EventsViewController.duplicatePressed(_:)), for: UIControlEvents.touchUpInside)
+            temperatureCell.timeButton.setTitle(self.dateFormatter.string(from: event.date as Date), for: UIControl.State())
+            temperatureCell.timeButton.addTarget(self, action: #selector(EventsViewController.showDatePicker(_:)), for: UIControl.Event.touchUpInside)
+            temperatureCell.duplicateButton.addTarget(self, action: #selector(EventsViewController.duplicatePressed(_:)), for: UIControl.Event.touchUpInside)
             return temperatureCell
         }
     }
@@ -707,7 +707,7 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         }
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let currentSection = indexPath.section
         self.crummyApiService.deleteEvent(self.kidId!, eventId: self.sections[currentSection][indexPath.row].id!) { (eventId, error) -> (Void) in
             if error != nil {
@@ -721,7 +721,7 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         
         if section.count < 1 {
             self.sections.remove(at: indexPath.section)
-            tableView.deleteSections(IndexSet(integer: indexPath.section), with: UITableViewRowAnimation.left)
+            tableView.deleteSections(IndexSet(integer: indexPath.section), with: UITableView.RowAnimation.left)
         } else {
             tableView.deleteRows(at: indexPaths, with: .automatic)
         }
@@ -773,7 +773,7 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
             let medicationView = Bundle.main.loadNibNamed("MedicationContainerView", owner: self, options: nil)?.first as! UIView
             self.currentContainerView = medicationView
             self.currentContainerViewHeight = medicationContainerViewHeight
-            self.constraintContainerViewBottom = NSLayoutConstraint(item: medicationView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+            self.constraintContainerViewBottom = NSLayoutConstraint(item: medicationView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
             self.currentContainerViewHeight = self.medicationContainerViewHeight
             self.medicationTextField.delegate = self
             self.medicationTextField.text = event.medication
@@ -784,7 +784,7 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
             let measurementView = Bundle.main.loadNibNamed("MeasurementsContainerView", owner: self, options: nil)?.first as! UIView
             self.currentContainerView = measurementView
             self.currentContainerViewHeight = measurementsContainerViewHeight
-            self.constraintContainerViewBottom = NSLayoutConstraint(item: measurementView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+            self.constraintContainerViewBottom = NSLayoutConstraint(item: measurementView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
             self.currentContainerViewHeight = self.measurementsContainerViewHeight
             self.measurementsHeightTextField.delegate = self
             self.measurementWeightTextField.delegate = self
@@ -797,7 +797,7 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
             let symptomsView = Bundle.main.loadNibNamed("SymptomsContainerView", owner: self, options: nil)?.first as! UIView
             self.currentContainerView = symptomsView
             self.currentContainerViewHeight = self.symptomsContainerViewHeight
-            self.constraintContainerViewBottom = NSLayoutConstraint(item: symptomsView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+            self.constraintContainerViewBottom = NSLayoutConstraint(item: symptomsView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
             self.symptomsTextField.delegate = self
             self.symptomsTextField.text = event.symptom
             self.currentCellHeight = self.symptomsCellHeight
@@ -807,7 +807,7 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
             let temperatureView = Bundle.main.loadNibNamed("TemperatureContainerView", owner: self, options: nil)?.first as! UIView
             self.currentContainerView = temperatureView
             self.currentContainerViewHeight = temperatureContainerViewHeight
-            self.constraintContainerViewBottom = NSLayoutConstraint(item: temperatureView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+            self.constraintContainerViewBottom = NSLayoutConstraint(item: temperatureView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
             self.currentContainerViewHeight = self.temperatureContainerViewHeight
             self.temperatureTextField.delegate = self
             self.temperatureTextField.text = event.temperature
@@ -816,12 +816,12 @@ class EventsViewController: UIViewController, UITextFieldDelegate, UITableViewDa
         }
         self.currentContainerView?.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.currentContainerView!)
-        let constraintTrailing = NSLayoutConstraint(item: self.currentContainerView!, attribute: NSLayoutAttribute.trailing, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: self.eventTypeConstraintBuffer)
+        let constraintTrailing = NSLayoutConstraint(item: self.currentContainerView!, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: self.eventTypeConstraintBuffer)
         self.view.addConstraint(constraintTrailing)
-        let constraintLeading = NSLayoutConstraint(item: self.currentContainerView!, attribute: NSLayoutAttribute.leading, relatedBy: .equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: -self.eventTypeConstraintBuffer)
+        let constraintLeading = NSLayoutConstraint(item: self.currentContainerView!, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: .equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: -self.eventTypeConstraintBuffer)
         self.view.addConstraint(constraintLeading)
         self.view.addConstraint(self.constraintContainerViewBottom!)
-        self.currentContainerView!.addConstraint(NSLayoutConstraint(item: self.currentContainerView!, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: self.currentContainerViewHeight))
+        self.currentContainerView!.addConstraint(NSLayoutConstraint(item: self.currentContainerView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1.0, constant: self.currentContainerViewHeight))
         self.view.layoutIfNeeded()
         constraintTrailing.constant = 0
         constraintLeading.constant = 0

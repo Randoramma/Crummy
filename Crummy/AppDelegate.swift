@@ -14,13 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   var globalNavigationItemFontSize: CGFloat = 17
   
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
     let attributes = [
-      NSFontAttributeName : UIFont(name: "HelveticaNeue", size: self.globalNavigationItemFontSize)!
+      convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont(name: "HelveticaNeue", size: self.globalNavigationItemFontSize)!
     ] as [AnyHashable: Any]
     
-    UIBarButtonItem.appearance().setTitleTextAttributes((attributes as! [String : Any]), for: .normal)
+    UIBarButtonItem.appearance().setTitleTextAttributes(convertToOptionalNSAttributedStringKeyDictionary((attributes as! [String : Any])), for: .normal)
     
     self.window?.tintColor = UIColor(red: 0.060, green: 0.158, blue: 0.408, alpha: 1.000)
     
@@ -59,3 +59,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 }
  
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}

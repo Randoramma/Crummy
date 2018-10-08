@@ -110,8 +110,8 @@ class EditKidViewController: UITableViewController, UITextFieldDelegate, UITextV
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    NotificationCenter.default.addObserver(self, selector: #selector(EditKidViewController.appWillResign), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(EditKidViewController.appBecameActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(EditKidViewController.appWillResign), name: UIApplication.willResignActiveNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(EditKidViewController.appBecameActive), name: UIApplication.didBecomeActiveNotification, object: nil)
   }
   
   override func viewDidDisappear(_ animated: Bool) {
@@ -120,15 +120,15 @@ class EditKidViewController: UITableViewController, UITextFieldDelegate, UITextV
   }
   
   
-  func appWillResign() {
-    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
+    @objc func appWillResign() {
+    let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
     let blurView = UIVisualEffectView(effect: blurEffect)
     blurView.tag = self.blurViewTag
     blurView.frame = self.view.frame
     self.view.addSubview(blurView)
   }
   
-  func appBecameActive() {
+    @objc func appBecameActive() {
     let blurView = self.view.viewWithTag(self.blurViewTag)
     UIView.animate(withDuration: self.animationDuration, animations: { () -> Void in
       blurView?.removeFromSuperview()
@@ -184,7 +184,7 @@ class EditKidViewController: UITableViewController, UITextFieldDelegate, UITextV
     } // else 
   }
 
-  func pickerCloserPressed(_ sender: AnyObject) {
+    @objc func pickerCloserPressed(_ sender: AnyObject) {
     
     self.datePickerChanged(datePicker)
     self.dateButton.isHidden = false
@@ -211,7 +211,7 @@ class EditKidViewController: UITableViewController, UITextFieldDelegate, UITextV
     self.view.addSubview(pickerView)
     
     datePicker = UIDatePicker(frame: CGRect(x: 0, y: doneButtonHeight, width: pickerView.frame.width, height: datePickerHeight))
-    datePicker.datePickerMode = UIDatePickerMode.date
+    datePicker.datePickerMode = UIDatePicker.Mode.date
     datePicker.backgroundColor = UIColor.lightGray
     if let birthDate = self.selectedKid?.DOBString {
       if birthDate != "" {
@@ -225,12 +225,12 @@ class EditKidViewController: UITableViewController, UITextFieldDelegate, UITextV
     pickerView.addSubview(datePicker)
     
     let pickerCloser = UIButton(frame: CGRect(x: 0, y: astheticSpacing, width: pickerWidth, height: doneButtonHeight))
-    pickerCloser.setTitle("Done", for: UIControlState())
-    pickerCloser.setTitleColor(UIColor.white, for: UIControlState())
+    pickerCloser.setTitle("Done", for: UIControl.State())
+    pickerCloser.setTitleColor(UIColor.white, for: UIControl.State())
     pickerCloser.center.x = self.view.center.x
     
     pickerView.addSubview(pickerCloser)
-    pickerCloser.addTarget(self, action: #selector(EditKidViewController.pickerCloserPressed(_:)), for: UIControlEvents.touchUpInside)
+    pickerCloser.addTarget(self, action: #selector(EditKidViewController.pickerCloserPressed(_:)), for: UIControl.Event.touchUpInside)
     
     UIView.animate(withDuration: datePickerInterval, animations: { () -> Void in
       
@@ -346,22 +346,22 @@ class EditKidViewController: UITableViewController, UITextFieldDelegate, UITextV
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     self.tableView.deselectRow(at: indexPath, animated: true)
     if indexPath.row == self.pickerCellIndexPath {
-      let alertController = UIAlertController(title: "Add a Photo", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+      let alertController = UIAlertController(title: "Add a Photo", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
       let addExistingPhotoAction = UIAlertAction(title: "Add an Existing Photo", style: .default, handler: { (alert) -> Void in
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
-        imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePickerController.allowsEditing = true
         self.present(imagePickerController, animated: true, completion: nil)
       })
       alertController.addAction(addExistingPhotoAction)
-      let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+      let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
       alertController.addAction(cancelAction)
-      if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+      if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
         let takePhotoAction = UIAlertAction(title: "Take a Photo", style: .default, handler: { (alert) -> Void in
           let imagePickerController = UIImagePickerController()
           imagePickerController.delegate = self
-          imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
+          imagePickerController.sourceType = UIImagePickerController.SourceType.camera
           imagePickerController.allowsEditing = true
           self.present(imagePickerController, animated: true, completion: nil)
         })
@@ -385,7 +385,7 @@ class EditKidViewController: UITableViewController, UITextFieldDelegate, UITextV
   //MARK: UIImagePickerControllerDelegate
   
     private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [AnyHashable: Any]){
-    if let photo = info[UIImagePickerControllerEditedImage] as? UIImage {
+    if let photo = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as? UIImage {
       self.kidImage = photo
       saveImage(photo)
     }
@@ -409,7 +409,7 @@ class EditKidViewController: UITableViewController, UITextFieldDelegate, UITextV
       if let dataObj = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [String: AnyObject]  {
         data = dataObj
       }
-      let imageData = UIImageJPEGRepresentation(image, 1)
+      let imageData = image.jpegData(compressionQuality: 1)
       let customImageLocation = "kid_photo_\(self.selectedKid!.kidID)"
       data[customImageLocation] = imageData as AnyObject
       NSKeyedArchiver.archiveRootObject(data, toFile: filePath)
@@ -430,4 +430,9 @@ class EditKidViewController: UITableViewController, UITextFieldDelegate, UITextV
       }
     }
   }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

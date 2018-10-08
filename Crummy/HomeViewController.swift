@@ -29,7 +29,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let blurViewTag = 99
     let animationDuration: Double = 0.3
     
-    let phonePopoverAC = UIAlertController(title: "PhoneList", message: "Select a number to dial.", preferredStyle: UIAlertControllerStyle.actionSheet)
+    let phonePopoverAC = UIAlertController(title: "PhoneList", message: "Select a number to dial.", preferredStyle: UIAlertController.Style.actionSheet)
     // find the Nib in the bundle.
     let phoneNib = UINib(nibName: "PhoneCellContainerView", bundle: Bundle.main)
     
@@ -44,7 +44,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.titleLabel.textColor = self.titleColor
         titleLabel.text = "Home"
         self.navigationItem.titleView = self.titleLabel
-        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
         
         let navBarImage = UIImage(named: "CrummyNavBar")
@@ -75,8 +75,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.appWillResign), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.appBecameActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.appWillResign), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.appBecameActive), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -85,9 +85,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     
-    func appWillResign() {
+    @objc func appWillResign() {
         if self.phoneMenuContainer != nil {
-            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
+            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
             let blurView = UIVisualEffectView(effect: blurEffect)
             blurView.tag = self.blurViewTag
             blurView.frame = self.view.frame
@@ -95,7 +95,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
-    func appBecameActive() {
+    @objc func appBecameActive() {
         if self.phoneMenuContainer != nil {
             let blurView = self.phoneMenuContainer.viewWithTag(self.blurViewTag)
             UIView.animate(withDuration: self.animationDuration, animations: { () -> Void in
@@ -214,10 +214,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         phoneMenuView.dataSource = self
         
         let phoneCloser = UIButton(frame: CGRect(x: 0, y: astheticSpacing, width: phoneMenuContainer.frame.width, height: doneButtonHeight))
-        phoneCloser.setTitle("Done", for: UIControlState())
-        phoneCloser.setTitleColor(UIColor.white, for: UIControlState())
+        phoneCloser.setTitle("Done", for: UIControl.State())
+        phoneCloser.setTitleColor(UIColor.white, for: UIControl.State())
         phoneCloser.center.x = self.view.center.x
-        phoneCloser.addTarget(self, action: #selector(HomeViewController.phoneCloserPressed(_:)), for: UIControlEvents.touchUpInside)
+        phoneCloser.addTarget(self, action: #selector(HomeViewController.phoneCloserPressed(_:)), for: UIControl.Event.touchUpInside)
         phoneMenuContainer.addSubview(phoneCloser)
         _ = Bundle.main.loadNibNamed("PhoneCellContainerView", owner: self, options: nil)
         UIView.animate(withDuration: phoneInterval, animations: { () -> Void in
@@ -225,7 +225,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         })
     } // phoneButtonPressed
     
-    func phoneCloserPressed(_ sender: AnyObject) {
+    @objc func phoneCloserPressed(_ sender: AnyObject) {
         let kidCount = CGFloat(kids.count)
         let phoneMenuViewAndDoneHeight: CGFloat = ((self.view.frame.height) - (kidCount * kidNumberHeight) - doneButtonHeight)
         UIView.animate(withDuration: phoneInterval, animations: { () -> Void in
